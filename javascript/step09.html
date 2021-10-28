@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        let inputValue = prompt(
+            "주민번호를 입력하세요",
+            "111111-1111118"
+        )
+        let check=0;
+        if(inputValue!=null){        
+            for (let i=0;i<13;i++){    
+                if(i==6){
+                    continue;
+                }else{
+                    let a1=(+inputValue.charAt(i));
+                    console.log(a1);
+                    if(i<=5){
+                        check_tmp=(a1)*((i%8)+2);
+                    }else{
+                        check_tmp=(a1)*(((i-1)%8)+2);
+                    }
+                    console.log(check_tmp);
+                    check=check+check_tmp;
+                    
+                }
+            }
+            let rest=check%11;
+            rest=11-rest;
+            rest=rest%10;
+            console.log(rest);
+            if (rest==inputValue.charAt(13)){        
+                alert('정상적인 주민번호 입니다.');
+            }else {            
+                    alert('잘못된 주민번호 입니다.')                
+            }           
+        }else{
+            alert('입력을 취소 하셨습니다.');
+        }
+
+        
+    </script>
+    <title>주민번호 체크</title>
+</head>
+<body>
+    
+</body>
+</html>
